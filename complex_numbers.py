@@ -61,8 +61,8 @@ class complex_numbers():
         r = d[0] ** (1 / n)
         d = []
         for k in range(n):
-            s1 = r * math.cos((fi) + math.pi * 2 * k / n)
-            s2 = r * math.sin((fi) + math.pi * 2 * k / n)
+            s1 = r * math.cos((fi + math.pi * 2 * k) / n)
+            s2 = r * math.sin((fi + math.pi * 2 * k) / n)
             d.append([s1, s2])
         return complex_numbers(d)
             
