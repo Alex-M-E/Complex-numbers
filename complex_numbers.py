@@ -40,13 +40,12 @@ class complex_numbers():
     def mod(self):
         return ((self.a ** 2) + (self.b ** 2)) ** 0.5
     def __pow__(self, n):
-        z = self
-        #print(z)
-        c = z
-        while n - 1 != 0:
-            c = c * z
-            n = n - 1
-        return c
+        b = self.b
+        a = self.a
+        fi = math.atan(b / a)
+        r = (a ** 2 + b ** 2) ** 0.5
+        return complex_numbers((r ** n) * math.cos(n * fi), (r ** n) * math.sin(n * fi))
+        
     @staticmethod
     def arg(self):
         r = (self.a ** 2 + self.b ** 2) ** 0.5
@@ -61,8 +60,8 @@ class complex_numbers():
         r = d[0] ** (1 / n)
         d = []
         for k in range(n):
-            s1 = r * math.cos((fi + math.pi * 2 * k) / n)
-            s2 = r * math.sin((fi + math.pi * 2 * k) / n)
+            s1 = r * math.cos((fi) + math.pi * 2 * k / n)
+            s2 = r * math.sin((fi) + math.pi * 2 * k / n)
             d.append([s1, s2])
         return complex_numbers(d)
             
@@ -87,23 +86,3 @@ class complex_numbers():
         sin = math.sin(fi)
         return [r, cos, sin, fi]
         
-
-
-x = complex_numbers(1, -2)
-y = x + x
-z = x - x
-s1 = complex_numbers(1, -1)
-s2 = complex_numbers(3, 6)
-q1 = complex_numbers(2, 3)
-q2 = complex_numbers(5, -7)
-print(x)
-print(y)
-print(z)
-print(s1 * s2)
-q = q1 / q2
-print(q)
-z = complex_numbers(1, 1)
-print(z ** 3)
-print(complex_numbers.arg(z))
-print(complex_numbers.coren(z ** 3, 3))
-print(complex_numbers.trigform(complex_numbers(-2, 2)))
